@@ -5,23 +5,60 @@ on:
         branches:
             - main
             - aprendiendo-github-actions
-        paths:
-            - '**.py'
     pull_request:
-        branches:
-            - main
-            - aprendiendo-github-actions
+        types:
+            - opened
+            - synchronize
+            - reopened
         paths:
             - '**.py'
     schedule:
-        - cron: '0 0 * * 0'
+        - cron: '0 0 * * *'
+    issues:
+        types:
+            - labeled
+    workflow_dispatch:
+        inputs:
+            lenguaje_favorito:
+                description: '¿Cuál es tu lenguaje de programación favorito?'
+                required: true
+                type: choice
+                options:
+                    - 'Python'
+                    - 'JavaScript'
+                    - 'Java'
+                    - 'C#'
+                    - 'PHP'
+                    - 'Ruby'
+                    - 'Go'
+                    - 'Swift'
+                    - 'Kotlin'
+                    - 'Rust'
+                    - 'TypeScript'
+            nombre:
+                description: '¿Cuál es tu nombre?'
+                required: true
+                type: string
+                default: 'Paulo'
 jobs:
-    hola-mundo:
+    hola-mundo-manual:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
               uses: actions/checkout@v4
-            - name: Definir variable
-              run: echo "USERNAME= ${{ github.actor}}" >> $GITHUB_ENV
+            - name: Definir nombre
+              run: echo "USERNAME= ${{ inputs.nombre }}" >> $GITHUB_ENV
+            - name: Definir lenguaje
+              run: echo "LENGUAJE= ${{ inputs.lenguaje_favorito }}" >> $GITHUB_ENV
+            - name: Correr script
+              run: python hola_lenguaje.py
+    hola-mundo:
+        if: ${{ github.event_name != 'workflow_dispatch' }}
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Definir nombre
+              run: echo "USERNAME= ${{ inputs.nombre }}" >> $GITHUB_ENV
             - name: Correr script
               run: python main.py
