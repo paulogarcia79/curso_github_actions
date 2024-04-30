@@ -1,0 +1,26 @@
+name: Usando triggers en mi Workflow
+on:
+    push:
+        branches:
+            - main
+            - aprendiendo-github-actions
+        paths:
+            - '**.py'
+    pull_request:
+        branches:
+            - main
+            - aprendiendo-github-actions
+        paths:
+            - '**.py'
+    schedule:
+        - cron: '0 0 * * 0'
+jobs:
+    hola-mundo:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Definir variable
+              run: echo "USERNAME= ${{ github.actor}}" >> $GITHUB_ENV
+            - name: Correr script
+              run: python main.py
