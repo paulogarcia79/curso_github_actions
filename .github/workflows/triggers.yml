@@ -25,7 +25,7 @@ on:
       nombre:
         description: 'Tu nombre'
         required: true
-        default: Juan
+        default: Paulo
         type: string
   schedule:
     - cron:  '15 22 * * *'
