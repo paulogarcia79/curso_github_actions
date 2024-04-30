@@ -1,4 +1,5 @@
 name: Usando triggers en mi Workflow
+run-name: Un workflow con triggers
 on:
     push:
         branches:
