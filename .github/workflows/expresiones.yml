@@ -3,26 +3,26 @@ run-name: Aprendiendo a usar expresiones
 on:
   workflow_dispatch:
     inputs:
-        edad:
-            description: 'Edad'
-            required: true
-            type: number
-        nombre:
-            description: 'Nombre'
-            required: true
-            type: string
-            default: 'Paulo'
+      edad:
+        description: 'Edad'
+        required: true
+        type: number
+      nombre:
+        description: 'Nombre'
+        required: true
+        type: string
+        default: 'Paulo'
 
 jobs:
-    mayor:
-        if: ${{ inputs.edad >= 18 }}
-        runs-on: ubuntu-latest
-        steps:
-            - name: Correr script
-              run: echo "¡Hola ${{ inputs.nombre }}! Eres mayor de edad."
-    menor:
-        if: ${{ inputs.edad < 18 }}
-        runs-on: ubuntu-latest
-        steps:
-            - name: Correr script
-              run: echo "¡Hola ${{ inputs.nombre }}! Eres menor de edad."
+  mayor:
+    if: ${{ inputs.edad >= 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo "¡Hola ${{ inputs.nombre }}! Eres mayor de edad."
+  menor:
+    if: ${{ inputs.edad < 18 }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Correr script
+        run: echo "¡Hola ${{ inputs.nombre }}! Eres menor de edad."
