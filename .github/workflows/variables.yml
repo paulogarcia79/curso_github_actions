@@ -5,7 +5,7 @@ jobs:
   usando-variables:
     runs-on: ubuntu-latest
     env:
-      USERNAME: "GITHUB_ACTOR"
+      USERNAME: ${{ github.actor }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
