@@ -1,8 +1,10 @@
 name: Contextos
 run-name: Estoy aprendiendo a usar contextos
 on:
-  schedule:
-    - cron:  '* * * * *'
+  push:
+    paths:
+      -'**.py'
+      -'**.yml'
 jobs:
   hola-mundo:
     runs-on: ubuntu-latest
