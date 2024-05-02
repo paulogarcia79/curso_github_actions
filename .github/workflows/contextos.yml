@@ -1,0 +1,15 @@
+name: Contextos
+run-name: Estoy aprendiendo a usar contextos
+on:
+  schedule:
+    - cron:  '* * * * *'
+jobs:
+  hola-mundo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Definir variable
+        run: echo "USERNAME=${{ github.actor }}" >> $GITHUB_ENV
+      - name: Correr script
+        run: python main.py
