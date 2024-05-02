@@ -1,5 +1,5 @@
 name: Expresiones
-run-name: Aprendiendo a usar expresiones
+run-name: Estoy aprendiendo a usar expresiones
 on:
   workflow_dispatch:
     inputs:
