@@ -5,7 +5,7 @@ jobs:
   usando-variables:
     runs-on: ubuntu-latest
     env:
-      USERNAME: "Paulo"
+      USERNAME: "GITHUB_ACTOR"
     steps:
       - name: Checkout
         uses: actions/checkout@v4
